@@ -35,6 +35,10 @@ class Mutator
                 $value = call_user_func(
                     [$this, $method], $this->model->getAttribute($name)
                 );
+
+                if (is_object($value)) {
+                    $value = $value->__toString();
+                }
             }
         }
 

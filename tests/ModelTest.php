@@ -32,6 +32,19 @@ class ModelTest extends \PHPUnit\Framework\TestCase
         $this->assertArrayHasKey('logged_at', $attributes);
         $this->assertEquals('2017', $attributes['logged_at']);
     }
+
+    /**
+     * @test
+     */
+    public function it_converts_objects_to_string()
+    {
+        $user = new User(['fixed_at' => Carbon::create(2017, 07, 01)]);
+
+        $attributes = $user->toArray();
+
+        $this->assertNotEmpty($attributes);
+        $this->assertNotInstanceOf(Carbon::class, $attributes['fixed_at']);
+    }
 }
 
 class User extends \Illuminate\Database\Eloquent\Model
@@ -52,5 +65,10 @@ class UserMutator extends \Jgrossi\Mutable\Mutator
     public function loggedAt(Carbon $date)
     {
         return $date->format('Y');
+    }
+
+    public function fixedAt(Carbon $date)
+    {
+        return $date;
     }
 }
