@@ -41,6 +41,7 @@ In your mutator class you might have one method for each attribute you want to c
 ```php
 namespace App\Models\Mutators;
 
+use Carbon\Carbon;
 use Jgrossi\Mutable\Mutator;
 
 class UserMutator extends Mutator
@@ -50,9 +51,9 @@ class UserMutator extends Mutator
         return ucfirst($value);
     }
 
-    public function createdAt($value)
+    public function createdAt(Carbon $date)
     {
-        return $value->format('Y-m-d');
+        return $date->format('Y-m-d');
     }
 }
 ```
