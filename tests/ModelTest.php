@@ -5,7 +5,7 @@ class ModelTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function it_has_mutate_method()
+    public function it_can_change_model_attributes()
     {
         $user = new User(['first_name' => 'john']);
 
