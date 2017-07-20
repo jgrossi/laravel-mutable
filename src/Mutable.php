@@ -14,8 +14,14 @@ trait Mutable
      */
     public function toArray()
     {
-        return (new Mutator())->mutate(
-            parent::toArray()
-        );
+        if (isset($this->mutator)) {
+            $class = $this->mutator;
+
+            return (new $class())->mutate(
+                parent::toArray()
+            );
+        }
+
+        return parent::toArray();
     }
 }
