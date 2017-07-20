@@ -18,7 +18,7 @@ trait Mutable
             $class = $this->mutator;
 
             return (new $class($this))->mutate(
-                parent::toArray()
+                array_merge($this->attributes, $this->relations)
             );
         }
 
