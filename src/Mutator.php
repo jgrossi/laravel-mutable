@@ -3,6 +3,7 @@
 namespace Jgrossi\Mutable;
 
 use Illuminate\Database\Eloquent\Model;
+use ReflectionClass;
 
 /**
  * Class Mutator
@@ -35,13 +36,24 @@ class Mutator
                 $value = call_user_func(
                     [$this, $method], $this->model->getAttribute($name)
                 );
-
-                if (is_object($value)) {
-                    $value = $value->__toString();
-                }
             }
         }
 
-        return $attributes;
+        return $this->callParentMethod($attributes);
+    }
+
+    /**
+     * @param array $attributes
+     * @return array
+     */
+    protected function callParentMethod(array $attributes)
+    {
+        $this->model->setRawAttributes($attributes);
+
+        $reflector = new ReflectionClass($this->model);
+        $parent = $reflector->getParentClass();
+        $method = $parent->getMethod('toArray');
+
+        return $method->invoke($this->model);
     }
 }
