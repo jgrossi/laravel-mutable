@@ -49,6 +49,11 @@ class UserMutator extends Mutator
     {
         return ucfirst($value);
     }
+
+    public function createdAt($value)
+    {
+        return $value->format('Y-m-d');
+    }
 }
 ```
 
