@@ -12,6 +12,19 @@ use Illuminate\Database\Eloquent\Model;
 class Mutator
 {
     /**
+     * @var Model
+     */
+    protected $model;
+
+    /**
+     * @param Model $model
+     */
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
+
+    /**
      * @param array $attributes
      * @return array
      */

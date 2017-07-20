@@ -17,7 +17,7 @@ trait Mutable
         if (isset($this->mutator)) {
             $class = $this->mutator;
 
-            return (new $class())->mutate(
+            return (new $class($this))->mutate(
                 parent::toArray()
             );
         }
