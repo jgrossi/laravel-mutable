@@ -1,0 +1,10 @@
+{
+    "autoload": {
+        "psr-4": {
+             "Mutable\\" : "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    }
+}
