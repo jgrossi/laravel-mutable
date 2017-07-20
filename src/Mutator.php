@@ -32,7 +32,9 @@ class Mutator
     {
         foreach ($attributes as $name => &$value) {
             if (method_exists($this, $method = camel_case($name))) {
-                $value = call_user_func([$this, $method], $value);
+                $value = call_user_func(
+                    [$this, $method], $this->model->getAttribute($name)
+                );
             }
         }
 
