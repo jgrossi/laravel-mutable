@@ -1,6 +1,6 @@
 <?php
 
-namespace Mutable;
+namespace Jgrossi\Mutable;
 
 /**
  * Trait Mutable

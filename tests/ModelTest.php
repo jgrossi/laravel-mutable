@@ -20,13 +20,13 @@ class ModelTest extends \PHPUnit\Framework\TestCase
 
 class User extends \Illuminate\Database\Eloquent\Model
 {
-    use \Mutable\Mutable;
+    use \Jgrossi\Mutable\Mutable;
 
     protected $mutator = UserMutator::class;
     protected $guarded = [];
 }
 
-class UserMutator extends \Mutable\Mutator
+class UserMutator extends \Jgrossi\Mutable\Mutator
 {
     public function firstName($value)
     {

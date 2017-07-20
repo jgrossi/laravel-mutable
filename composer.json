@@ -1,7 +1,18 @@
 {
+    "name": "jgrossi/laravel-mutable",
+    "description": "Change model attributes values easily",
+    "homepage": "http://github.com/jgrossi/laravel-mutable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Junior Grossi",
+            "email": "juniorgro@gmail.com",
+            "homepage": "http://jgrossi.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
-             "Mutable\\" : "src/"
+             "Jgrossi\\Mutable\\" : "src/"
         }
     },
     "require": {
